@@ -1,2 +1,12 @@
 -persist S3Object to disk
--get s3client wired into deploy service
+-add to ref arch vm
+-get production credentials sorted out
+
++get s3client wired into deploy service
+
+
+dev and production credentials
+
+
+https://stackoverflow.com/questions/7679924/how-to-write-an-s3-object-to-a-file
+https://www.credera.com/blog/technology-insights/java/simple-aws-credentials-with-spring-framework/

@@ -1,7 +1,7 @@
-package hello;
+package filedeployer;
 
 import org.springframework.context.annotation.*;
 
 @Configuration
-@ComponentScan("hello")
+@ComponentScan("filedeployer")
 public class AppConfig {}
