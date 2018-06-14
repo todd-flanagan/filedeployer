@@ -1,0 +1,2 @@
+-persist S3Object to disk
+-get s3client wired into deploy service
