@@ -16,6 +16,7 @@ import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import filedeployer.services.S3Services;
+import filedeployer.storage.StorageService;
 
 @Service
 public class S3ServicesImpl implements S3Services {
@@ -24,13 +25,17 @@ public class S3ServicesImpl implements S3Services {
 
 	private AmazonS3 s3client;
 
+	private StorageService storageService;
+
 	@Value("${api-user.s3.bucket}")
 	private String bucketName;
 
 	@Autowired
-	public S3ServicesImpl(AmazonS3 s3client) {
+	public S3ServicesImpl(AmazonS3 s3client, StorageService storageService) {
 		logger.info("clinet: " + s3client);
         this.s3client = s3client;
+
+				this.storageService = storageService;
 	}
 
 	@Override
@@ -42,9 +47,9 @@ public class S3ServicesImpl implements S3Services {
 						logger.info("clinet: " + s3client);
             S3Object s3object = s3client.getObject(new GetObjectRequest(bucketName, keyName));
             System.out.println("Content-Type: "  + s3object.getObjectMetadata().getContentType());
-            System.out.println(s3object.getObjectContent());
-            logger.info("===================== Import File - Done! =====================");
 
+						logger.info("===================== Import File - saving! =====================");
+						storageService.store(s3object.getObjectContent(), keyName);
         } catch (AmazonServiceException ase) {
         	logger.info("Caught an AmazonServiceException from GET requests, rejected reasons:");
 			logger.info("Error Message:    " + ase.getMessage());
@@ -56,6 +61,8 @@ public class S3ServicesImpl implements S3Services {
         	logger.info("Caught an AmazonClientException: ");
             logger.info("Error Message: " + ace.getMessage());
 				}
+
+
 	}
 
 }
