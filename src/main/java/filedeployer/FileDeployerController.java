@@ -14,8 +14,8 @@ public class FileDeployerController {
   S3Services s3Services;
 
     @RequestMapping("/deploy")
-    public void deployFiles(@RequestParam(value="name", defaultValue="World") String name) {
-         s3Services.downloadFile("foo.mltbx");
+    public void deployFiles(@RequestParam(value="name") String name) {
+         s3Services.downloadFile(name);
         return;
     }
 }
