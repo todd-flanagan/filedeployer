@@ -1,4 +1,4 @@
-package filedeployer;
+package filedeployer.services;
 
 import org.springframework.context.annotation.*;
 import com.amazonaws.auth.AWSCredentialsProvider;

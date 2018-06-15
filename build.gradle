@@ -15,11 +15,6 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-dependencyManagement {
- imports {
-    mavenBom 'com.amazonaws:aws-java-sdk-bom:1.11.228'
- } 
-}
 
 bootJar {
     baseName = 'fileDeployer'
@@ -28,6 +23,12 @@ bootJar {
 
 repositories {
     mavenCentral()
+}
+
+dependencyManagement {
+ imports {
+    mavenBom 'com.amazonaws:aws-java-sdk-bom:1.11.228'
+ }
 }
 
 sourceCompatibility = 1.8

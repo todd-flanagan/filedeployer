@@ -1,5 +1,6 @@
 package filedeployer.services;
 
+
 import java.io.File;
 import java.io.IOException;
 
@@ -15,7 +16,6 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
-import filedeployer.services.S3Services;
 
 @Service
 public class S3ServicesImpl implements S3Services {
@@ -23,6 +23,7 @@ public class S3ServicesImpl implements S3Services {
 	private Logger logger = LoggerFactory.getLogger(S3ServicesImpl.class);
 
 	private AmazonS3 s3client;
+
 
 	@Value("${api-user.s3.bucket}")
 	private String bucketName;
