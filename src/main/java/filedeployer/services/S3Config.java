@@ -24,7 +24,7 @@ public class S3Config {
 	private String region;
 
   @Autowired
-  private CredProviderDevelopment credProvider;
+  private CredProvider credProvider;
 
 
 	@Bean

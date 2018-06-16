@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Value;
 
 @Configuration
 @Profile("dev")
-public class CredProviderDevelopment {
+public class CredProviderDevelopment implements CredProvider {
 
   @Value("${aws.user}")
   protected String awsUsername;
 
   @Bean
-  AWSCredentialsProvider credProvider() {
+  public AWSCredentialsProvider credProvider() {
     return new ProfileCredentialsProvider(awsUsername);
   }
 }
