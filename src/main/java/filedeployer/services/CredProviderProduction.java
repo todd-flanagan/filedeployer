@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 
 @Configuration
-@Profile("dockerdev")
-public class CredProviderDockerDev implements CredProvider {
+@Profile("production")
+public class CredProviderProduction implements CredProvider {
 
   @Bean
   public AWSCredentialsProvider credProvider() {

@@ -6,4 +6,5 @@ echo $AWS_ACCESS_KEY_ID
 docker run -p 8090:8090 \
    -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
    -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_KEY \
+   -e "SPRING_PROFILES_ACTIVE=dockerdev" \
    springio/filedeployer
