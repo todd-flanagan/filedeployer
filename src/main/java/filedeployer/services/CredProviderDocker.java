@@ -2,18 +2,15 @@ package filedeployer.services;
 
 import org.springframework.context.annotation.*;
 import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import org.springframework.beans.factory.annotation.Value;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 
 @Configuration
-@Profile("dev")
-public class CredProviderDevelopment implements CredProvider {
-
-  @Value("${aws.user}")
-  protected String awsUsername;
+@Profile("dockerdev")
+public class CredProviderDockerDev implements CredProvider {
 
   @Bean
   public AWSCredentialsProvider credProvider() {
-    return new ProfileCredentialsProvider(awsUsername);
+    return new EnvironmentVariableCredentialsProvider();
   }
 }
